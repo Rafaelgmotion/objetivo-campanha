@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>LumenStudio • Planejamento Estratégico I-deal Óptics</title>
+    <!-- Google Fonts & Smoothing -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f0f4fe;
+            font-family: 'Inter', sans-serif;
+            color: #0a1a2f;
+            scroll-behavior: smooth;
+        }
+
+        /* LUMEN AZUL ASSINATURA */
+        :root {
+            --lumen-deep: #0A2647;
+            --lumen-bright: #1B4A8F;
+            --lumen-electric: #2E7DD1;
+            --lumen-glow: #4C9AFF;
+            --lumen-soft: #EFF5FF;
+            --lumen-accent: #FFB74D;
+            --glass-bg: rgba(255, 255, 255, 0.92);
+            --shadow-sm: 0 12px 30px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 20px 35px -12px rgba(0, 20, 50, 0.15);
+        }
+
+        /* decorative gradient */
+        .bg-gradient-lumen {
+            background: linear-gradient(135deg, #eef4ff 0%, #d9e6ff 100%);
+        }
+
+        /* custom scroll */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e0e9f5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--lumen-electric);
+            border-radius: 10px;
+        }
+
+        /* Layout principal */
+        .planning-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 5rem;
+        }
+
+        /* cabeçalho impacto */
+        .hero {
+            background: linear-gradient(105deg, #ffffff 0%, #f3f9ff 100%);
+            border-radius: 3.5rem;
+            padding: 2rem 2rem 2rem 2.5rem;
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(46, 125, 209, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            font-size: 220px;
+            opacity: 0.05;
+            position: absolute;
+            bottom: -40px;
+            right: -30px;
+            pointer-events: none;
+        }
+
+        .client-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--lumen-deep);
+            color: white;
+            border-radius: 60px;
+            padding: 0.4rem 1.2rem;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: -0.2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: 3px;
+            color: rgb(0, 60, 124);
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.2rem;
+        }
+
+        .pill {
+            background: white;
+            border-radius: 40px;
+            padding: 0.4rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            color: var(--lumen-bright);
+            border: 1px solid #cddff5;
+        }
+
+        /* cards grid */
+        .grid-strategy {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(0px);
+            border-radius: 2rem;
+            padding: 1.6rem 1.8rem;
+            transition: all 0.25s ease;
+            border: 1px solid rgba(46, 125, 209, 0.2);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--lumen-glow);
+            box-shadow: 0 25px 35px -15px rgba(27, 74, 143, 0.2);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            color: var(--lumen-electric);
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--lumen-electric);
+            padding-left: 0.8rem;
+        }
+
+        .badge-blue {
+            background: var(--lumen-soft);
+            color: var(--lumen-bright);
+            font-weight: 600;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        /* glasses gallery section (fotos óculos luz azul) */
+        .glass-showcase {
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem 1.8rem;
+            margin: 2.5rem 0;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(46,125,209,0.2);
+        }
+
+        .glass-showcase h2 {
+            font-weight: 700;
+            color: var(--lumen-deep);
+            margin-bottom: 1rem;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.8rem;
+            margin-top: 1.6rem;
+        }
+
+        .glass-card {
+            background: #ffffff;
+            border-radius: 1.8rem;
+            overflow: hidden;
+            width: 220px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+            border: 1px solid #e2edff;
+        }
+
+        .glass-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+            background: #eef3fc;
+        }
+
+        .glass-card p {
+            padding: 0.8rem;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: var(--lumen-bright);
+        }
+
+        /* tabelas e listas */
+        .metric-list, .creative-list {
+            list-style: none;
+        }
+        .metric-list li, .creative-list li {
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            font-size: 0.92rem;
+        }
+        .metric-list i, .creative-list i {
+            color: var(--lumen-electric);
+            width: 20px;
+            font-size: 0.9rem;
+        }
+
+        .divider-light {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--lumen-glow), transparent);
+            margin: 1.5rem 0;
+        }
+
+        .whatsapp-flow {
+            background: #e9f3ff;
+            border-radius: 1.5rem;
+            padding: 1.6rem;
+            border-left: 8px solid #25D366;
+        }
+
+        .double-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+            gap: 1.5rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 4rem;
+            color: #4a627a;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 760px) {
+            .hero h1 { font-size: 2.2rem; }
+            .grid-strategy { grid-template-columns: 1fr; }
+            .planning-container { padding: 1rem; }
+        }
+
+        .btn-outline-blue {
+            border: 1.5px solid var(--lumen-electric);
+            background: transparent;
+            border-radius: 60px;
+            padding: 0.3rem 1rem;
+            color: var(--lumen-electric);
+            font-weight: 600;
+            font-size: 0.75rem;
+            transition: 0.2s;
+        }
+        .highlight {
+            background: linear-gradient(120deg, #fff3bf, #ffe7a3);
+            padding: 0.2rem 0.4rem;
+            border-radius: 12px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-gradient-lumen">
+<div class="planning-container">
+    
+    <!-- Hero com identidade LumenStudio + cliente -->
+    <div class="hero">
+        <div class="client-badge">
+            <i class="fas fa-chart-line"></i> LUMENSTUDIO • TRAFFIC LAB
+        </div>
+        <h1>PLANEJAMENTO ESTRATÉGICO TRÁFEGO PAGO</h1>
+        <div style="font-size: 1.3rem; font-weight: 600; margin: 0.5rem 0 0.5rem;">I-deal Óptics</div>
+        <div style="color: #2c577c;">Campanha: Filtro Azul Infantil | Três Rios/RJ (Vila Isabel) | 15 dias | Budget R$300</div>
+        <div class="meta-tags">
+            <span class="pill"><i class="fas fa-video"></i> Formato vencedor: Vídeo + WhatsApp</span>
+            <span class="pill"><i class="fas fa-chart-simple"></i> Meta: 30-60 conversas</span>
+            <span class="pill"><i class="fas fa-chart-simple"></i> Objetivo: 3 a 10 vendas</span>
+            <span class="pill"><i class="fas fa-child"></i> Público: Mães 28-40 / Pais 28-45</span>
+        </div>
+    </div>
+
+    <!-- Galeria de Óculos com proteção luz azul (fotos reais estilo) -->
+    <div class="glass-showcase">
+        <h2><i class="fas fa-glasses"></i> Proteção Azul • Estilo & Saúde Visual</h2>
+        <p style="margin-bottom: 0.5rem;">Lentes com filtro de luz azul — indicado para crianças e rotina digital intensa</p>
+        <div class="gallery">
+            <div class="glass-card">
+                <img src="/fotos/luz_azul.webp" alt="Óculos infantil proteção azul">
+                <p>Modelo Infantil c/ Proteção Luz azul</p>
+            </div>
+            <div class="glass-card">
+                <img src="/fotos/crianca_feliz.webp" alt="Lentes com filtro azul">
+                <p>Conforto visual + tecnologia</p>
+            </div>
+            <div class="glass-card">
+                <img src="/fotos/leveza.jpeg" alt="Criança usando óculos">
+                <p>Leveza e ajuste anatômico</p>
+            </div>
+        </div>
+        <div style="margin-top: 1rem; font-size:0.75rem; color:#4a6a8e;"><i class="fas fa-camera"></i> Conteúdo real com autorização — depoimentos e fotos da loja</div>
+    </div>
+
+    <!-- Grid completo: diagnóstico + objetivo + estrutura -->
+    <div class="grid-strategy">
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-stethoscope"></i></div>
+            <h3>Diagnóstico</h3>
+            <div class="badge-blue">Campanha anterior validada</div>
+            <ul class="metric-list">
+                <li><i class="fas fa-check-circle"></i> Formato vencedor: Vídeo + WhatsApp → +100 conversas</li>
+                <li><i class="fas fa-exclamation-triangle"></i> Problema: público amplo dilui orçamento</li>
+                <li><i class="fas fa-chart-line"></i> Direção: Refinamento, segmentação emocional e controle otimização</li>
+            </ul>
+            <div class="divider-light"></div>
+            <p><strong>Decisão estratégica:</strong> Manter estrutura validada + aumento eficiência por público preciso e criativos por intenção.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-bullseye"></i></div>
+            <h3>Objetivo & Metas</h3>
+            <p><span class="highlight">Primário:</span> Volume máximo de conversas qualificadas no WhatsApp</p>
+            <p><span class="highlight">Secundário:</span> Converter fluxo em visitas presenciais na loja</p>
+            <ul class="metric-list" style="margin-top: 15px;">
+                <li><i class="fas fa-comments"></i> Meta operacional: <strong>30 a 60 conversas</strong> (15 dias)</li>
+                <li><i class="fas fa-chart-simple"></i> Meta financeira: 10% a 20% conversão → <strong>3 a 10 vendas</strong></li>
+                <li><i class="fas fa-coins"></i> CPA ideal ≤ R$3 por conversa</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-layer-group"></i></div>
+            <h3>Estrutura da Campanha</h3>
+            <p><i class="fas fa-envelope"></i> <strong>Tipo:</strong> Mensagens (WhatsApp) | Otimização: Conversas iniciadas</p>
+            <p><strong>Campanha:</strong> [VEND] FiltroAzul_Mai</p>
+            <div class="double-col" style="margin-top: 10px;">
+                <div><i class="fas fa-female"></i> Conjunto 1 (Principal):<br> Mães 28-40 • R$200<br> Criativos A e B</div>
+                <div><i class="fas fa-male"></i> Conjunto 2 (Teste):<br> Pais 28-45 • R$100<br> Criativo C</div>
+            </div>
+            <div class="divider-light"></div>
+            <div><i class="fas fa-calendar-week"></i> Distribuição: R$20/dia (15d)</div>
+            <div><i class="fas fa-chart-simple"></i> Regra: Dia 4 → cortar pior criativo | Dia 7 → manter melhor | CPA > R$3 → redistribuir</div>
+        </div>
+    </div>
+
+    <!-- Público e Posicionamento -->
+    <div class="grid-strategy">
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-users"></i></div>
+            <h3>Público-alvo ultra segmentado</h3>
+            <ul class="metric-list">
+                <li><i class="fas fa-map-marker-alt"></i> Raio 5-7 km da loja (Vila Isabel, Três Rios)</li>
+                <li><i class="fas fa-female"></i> Idade: 28 a 45 anos (foco mulheres)</li>
+                <li><i class="fas fa-heart"></i> Interesses: Maternidade, Filhos, Escola, Pediatria, Saúde Infantil</li>
+                <li><i class="fas fa-chalkboard-user"></i> Comportamento: Pais com filhos de 4 a 12 anos</li>
+                <li><i class="fas fa-ban"></i> Exclusão: quem já iniciou conversa últimos 30 dias</li>
+            </ul>
+            <p style="margin-top: 12px;"><i class="fas fa-lightbulb"></i> <strong>Justificativa:</strong> Orçamento baixo → precisão > alcance.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-crown"></i></div>
+            <h3>Posicionamento</h3>
+            <div style="background: #eef2fa; border-radius: 1rem; padding: 1rem;">
+                <p style="font-size: 1.2rem; font-weight: 700;">“Óculos infantil com filtro azul mais rápido e acessível da região”</p>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+                    <span class="pill">🔹 Proteção</span>
+                    <span class="pill">🔹 Facilidade</span>
+                    <span class="pill">⚡ Rapidez</span>
+                    <span class="pill">🏆 Prova local</span>
+                </div>
+            </div>
+            <div class="divider-light"></div>
+            <p><i class="fas fa-check-double"></i> Headline mental que conecta emocional + conveniência regional.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-video"></i></div>
+            <h3>Criativos vencedores</h3>
+            <p><strong>Vídeo A — Medo</strong> (urgência emocional) |</p>
+                <p><strong>Vídeo B — Solução</strong> Facilitar Decisão |</p>
+                <P><strong>Vídeo C — Urgência Racional</strong> Ativar Pais mais Racionais</p>
+            <details style="margin-top: 12px;">
+                <summary style="cursor: pointer; color: var(--lumen-bright); font-weight:600;"><i class="fas fa-play-circle"></i> Ver roteiro resumido A</summary>
+                <p style="margin-top: 8px; font-weight:600">Objetivo: Ângulo Medo</p>
+                <p style="margin-top: 8px;">🔹 Hook: "Você sabe o que a tela está fazendo nos olhos do seu filho?"</p>
+                    <p>🔹 Cena → Criança usando celular</p> 
+                    <P>🔹 Problema → Crianças passam até 6 horas por dia expostas à luz azul</p>
+                    <P>🔹 Solução → Mostrar óculos + explicação simples + depoimento mãe → CTA WhatsApp.</P>
+                    <P>🔹 Imagem de capa → Criança + óculos + expressão neutra</P>
+            </details>
+            <details>
+                <summary style="cursor: pointer; color: var(--lumen-bright); font-weight:600;"><i class="fas fa-play-circle"></i> Ver roteiro resumido B</summary>
+                <p style="margin-top: 8px; font-weight:600">Objetivo: Facilitar Decisão</p>
+                <p>🔹 Hook: "Proteger a visão do seu filho é mais simples do que parece."</p>
+                   <p>🔹 Cena → Criança experimentando óculos</p>
+                   <p>🔹 Solução → Mostrar leveza, conforto e adaptação → experimentação conforto + prova social → CTA agende WhatsApp.</p>
+                   <p>🔹 Imagem de capa → Mãe + criança sorrindo</p>
+            </details>
+            <details>
+                <summary style="cursor: pointer; color: var(--lumen-bright); font-weight:600;"><i class="fas fa-play-circle"></i> Ver roteiro resumido C</summary>
+                <P style="margin-top: 8px; font-weight:600">Objetivo: Ativar Pais mais Racionais</P>
+                <p>🔹 Hook: "Seu filho usa tela na escola?"</p>
+                    <p>🔹 Contexto → Rotina digital atual </p>
+                    <p>🔹 Solução → Mostrar produto + condição → Garanta agora pelo WhatsApp.</p> 
+                    <p>🔹 Imagem de capa → Criança com tablet</p>
+            </details>
+        </div>
+    </div>
+
+    <!-- Copy + diferenciais reais -->
+    <div class="grid-strategy">
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-pen-fancy"></i></div>
+            <h3>Copy dos Anúncios</h3>
+            <div style="background:#FAFDFF; border-radius: 1rem; padding: 0.8rem; margin-bottom: 1rem;">
+                <p><strong>Anúncio A:</strong> “Toda mãe quer proteger a saúde dos filhos. Mas a luz azul das telas pode causar cansaço visual… Na I-deal Óptics, você encontra óculos com filtro azul infantil, com conforto e proteção real. Fale conosco no WhatsApp.”</p>
+            </div>
+            <div style="background:#FAFDFF; border-radius: 1rem; padding: 0.8rem;">
+                <p><strong>Anúncio B:</strong> “Crianças são mais sensíveis à luz azul do que adultos. Aqui na I-deal Óptics você encontra a solução ideal. Atendimento rápido em Três Rios. Clique e fale agora no WhatsApp.”</p>
+            </div>
+            <div style="background:#FAFDFF; border-radius: 1rem; padding: 0.8rem;">
+                <p><strong>Anúncio C:</strong> “Seu filho usa tela todos os dias? A luz azul pode afetar foco, visão e sono. Você pode esperar o problema… ou prevenir agora. Óculos com filtro de luz azul infantil na Ideal Optics. Simples, acessível e eficaz. Clique e fale agora no WhatsApp.”</p>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-photo-video"></i></div>
+            <h3>Conteúdo REAL (Diferencial)</h3>
+            <ul class="metric-list">
+                <li><i class="fas fa-user-check"></i> Depoimento real (5 segundos)</li>
+                <li><i class="fas fa-store"></i> Fotos reais de atendimento / loja</li>
+                <li><i class="fas fa-baby-carriage"></i> Crianças com autorização</li>
+            </ul>
+            <p><strong>Aplicação:</strong> Feed → capa do vídeo, Stories → variações rápidas, anúncios → reforço confiança. Autenticidade aumenta conversão local.</p>
+            <div class="divider-light"></div>
+            <div><i class="fas fa-flask"></i> Teste avançado: Copy "Óculos infantil pronto mais rápido da região" — rapidez + conveniência ressoa forte no mercado local.</div>
+        </div>
+        <div class="card">
+            <div class="card-icon"><i class="fab fa-whatsapp"></i></div>
+            <h3>Fluxo de Conversão WhatsApp</h3>
+            <div class="whatsapp-flow">
+                <p><i class="fab fa-whatsapp" style="color:#25D366;"></i> <strong>Mensagem automática:</strong> "Olá! Vi o anúncio sobre o filtro azul para crianças e tenho interesse. Pode me dar mais informações?"</p>
+                <ol style="margin-left: 1.2rem; margin-top: 10px;">
+                    <li>Abertura: Quantos anos tem seu filho?</li>
+                    <li>Diagnóstico: Ele usa muito celular ou computador?</li>
+                    <li>Direcionamento: Temos modelos ideais pra idade dele</li>
+                    <li>Fechamento: Pode vir hoje ou amanhã testar?</li>
+                </ol>
+                <p style="margin-top: 10px;"><strong>Regra:</strong> Resposta rápida + direcionamento direto para loja.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Métricas + Erros críticos + Otimização operacional -->
+    <div class="grid-strategy">
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+            <h3>Métricas & Benchmarks</h3>
+            <ul class="metric-list">
+                <li><i class="fas fa-target"></i> CPA ≤ R$3 por conversa</li>
+                <li><i class="fas fa-chart-simple"></i> CTR → validar criativo</li>
+                <li><i class="fas fa-eye"></i> CPM eficiência de público</li>
+                <li><i class="fas fa-comment-dots"></i> Conversas volume · Visitas conversão real</li>
+                <li><i class="fas fa-trophy"></i> Benchmark: 30–60 conversas | 3–10 vendas</li>
+            </ul>
+        </div>
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-exclamation-circle"></i></div>
+            <h3>Erros Críticos (evitar)</h3>
+            <ul class="metric-list">
+                <li><i class="fas fa-clock"></i> Demorar para responder</li>
+                <li><i class="fas fa-door-open"></i> Não chamar para loja</li>
+                <li><i class="fas fa-reply-all"></i> Resposta genérica</li>
+                <li><i class="fas fa-hourglass-half"></i> Falta de urgência</li>
+                <li><i class="fas fa-clone"></i> Criativo genérico</li>
+            </ul>
+            <div class="divider-light"></div>
+            <p><i class="fas fa-chart-line"></i> Otimização avançada: Testar copy de rapidez e monitorar frequência.</p>
+        </div>
+        <div class="card">
+            <div class="card-icon"><i class="fas fa-handshake"></i></div>
+            <h3>Alinhamento Operacional</h3>
+            <p><strong>Tráfego:</strong> Gerar volume qualificado</p>
+            <p><strong>Social Media:</strong> Produzir conteúdo real e consistente</p>
+            <p><strong>Atendimento:</strong> Converter rápido em visita</p>
+            <div style="margin: 1rem 0 0; background: var(--lumen-deep); color: white; border-radius: 1.2rem; padding: 0.6rem 1rem; text-align: center; font-weight:600;">
+                🎯 Objetivo único: Levar pessoas para dentro da loja
+            </div>
+        </div>
+    </div>
+
+    <!-- Sessão extra - proteção luz azul reforço -->
+    <div class="glass-showcase" style="background: linear-gradient(125deg, #FFFFFF, #F3F9FF);">
+        <h2><i class="fas fa-shield-alt"></i> Por que filtro azul para crianças?</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 1rem;">
+            <div style="max-width: 260px;"><i class="fas fa-eye" style="font-size: 2rem; color: var(--lumen-electric);"></i><p>Redução da fadiga visual digital</p></div>
+            <div style="max-width: 260px;"><i class="fas fa-moon" style="font-size: 2rem; color: var(--lumen-electric);"></i><p>Melhora qualidade do sono</p></div>
+            <div style="max-width: 260px;"><i class="fas fa-children" style="font-size: 2rem; color: var(--lumen-electric);"></i><p>Proteção no desenvolvimento ocular infantil</p></div>
+        </div>
+        <p style="margin-top: 1.5rem;"><i class="fas fa-check-circle" style="color: #1B4A8F;"></i> I-deal Óptics – especialistas em visão infantil em Três Rios</p>
+    </div>
+
+    <footer>
+        <hr style="opacity:0.2; margin-bottom: 1rem;">
+        <i class="fas fa-lightbulb"></i> LumenStudio • Planejamento Estratégico de Tráfego Pago <br>
+        Campanha I-deal Óptics | Filtro Azul Infantil | Dados e diretrizes para ação integrada entre Tráfego, Social Media e Atendimento.
+        <div style="margin-top: 10px; font-size: 12px;">base sólida: vídeo + wa, segmentação emocional e precisão local</div>
+    </footer>
+</div>
+</body>
+</html>
